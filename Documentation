@@ -1,0 +1,17 @@
+Dockerfile consists of:
+
+1) FROM: specifies the base image
+2) WORKDIR: specifies which directory you want to start from (in the container);
+	    In /home/ubuntu we copy the contents of script folder	
+3) COPY: COPY <source folder> <destination folder>; here '.' means everywhere
+4) RUN: another way to run a command
+5) WORKDIR: this redirects us /github_folder/UNext after we run the shellscript file
+6) CMD: another way to run a command
+7) EXPOSE: specifies what ports we can connect to
+
+test.sh consists of:
+
+1)Normal shell commands that we run in terminal are listed in the shellscript
+2)n 20: this specifies that we need to install version 20 of n
+3)$SHELL: this helps in changing directories
+
