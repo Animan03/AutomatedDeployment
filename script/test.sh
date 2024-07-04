@@ -17,5 +17,5 @@ apt-get install git -y
 cd UNext
 echo "npm install and dependencies"
 # npm install
-rm -rf node_modules package-lock.json && npm install && npm start
+rm -rf node_modules package-lock.json && npm install
 $SHELL
