@@ -1,8 +1,8 @@
 #!/bin/bash
 echo "Hello"
 apt update
-apt install curl
-apt install wget
+apt install curl -y
+apt install wget -y
 apt-get install nodejs -y
 echo "installing npm"
 apt-get install npm -y
