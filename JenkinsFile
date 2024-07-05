@@ -1,0 +1,133 @@
+pipeline {            
+
+agent any 
+
+    stages { 
+
+        stage('Pulling from github') { 
+
+            steps { 
+
+                echo 'Hello World' 
+
+                sh 'git clone "https://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@github.com/Animan03/UNext.git" '   
+
+                echo 'Successfully cloned the repo'  
+
+            } 
+
+        } 
+
+        stage('Version check'){ 
+
+            steps { 
+
+                    sh 'node -v'      
+
+                    sh 'npm -v' 
+
+            } 
+
+        } 
+
+        stage('Building the docker image') 
+
+        { 
+
+            steps{ 
+
+                dir('UNext'){ 
+
+                    echo 'Building the docker image' 
+
+                    sh 'sudo docker build -t unext .'  
+
+                } 
+
+            } 
+
+        } 
+
+        stage('Tagging') 
+
+        { 
+
+            steps{ 
+
+                dir('UNext'){ 
+
+                    echo 'Tagging' 
+
+                    sh 'sudo docker tag unext:latest unext' 
+
+                } 
+
+            } 
+
+        } 
+
+        stage('Deploying the website') 
+
+        { 
+
+            steps{ 
+
+                dir('UNext'){ 
+
+                    echo 'Deploying the website' 
+
+                    sh 'sudo docker run -d --name mycontainer -p 5000:5000 unext'    
+
+                    sleep time: 15, unit: 'SECONDS' 
+
+                } 
+
+            } 
+
+        } 
+
+        stage('Closing the website and removing the containers and image') 
+
+        { 
+
+            steps{ 
+
+                dir('UNext'){ 
+
+                    echo 'Closing the port and removing the containers and image' 
+
+                    sh 'sudo docker stop mycontainer' 
+
+                    sh 'sudo docker rm mycontainer'
+
+                    sh 'sudo docker rmi unext'  
+
+                    echo 'Image and container destroyed' 
+
+                } 
+
+            } 
+
+        } 
+
+        stage('Removing the directories') 
+
+        { 
+
+            steps{ 
+
+                sh 'pwd' 
+
+                sh 'sudo rm -rf UNext' 
+
+                sh 'sudo rm -rf UNext@tmp' 
+
+                echo 'Directories have been removed' 
+
+            } 
+
+        } 
+
+    } 
+
+} 
