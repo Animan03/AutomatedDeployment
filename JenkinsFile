@@ -10,7 +10,7 @@ agent any
 
                 echo 'Hello World' 
 
-                sh 'git clone "https://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@github.com/Animan03/UNext.git" '   
+                sh 'git clone "https://github.com/Animan03/AutomatedDeployment.git" '   
 
                 echo 'Successfully cloned the repo'  
 
