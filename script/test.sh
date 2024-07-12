@@ -14,7 +14,7 @@ mkdir github_folder
 cd github_folder
 apt-get update
 apt-get install git -y 
-git clone https://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@github.com/Animan03/UNext.git
+git clone https://github.com/Animan03/AutomatedDeployment.git
 cd UNext
 echo "npm install and dependencies"
 npm install
