@@ -15,7 +15,7 @@ cd github_folder
 apt-get update
 apt-get install git -y 
 git clone https://github.com/Animan03/AutomatedDeployment.git
-cd UNext
+cd AutomatedDeployment
 echo "npm install and dependencies"
 npm install
 # rm -rf node_modules package-lock.json && npm install
