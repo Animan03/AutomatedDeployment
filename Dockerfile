@@ -7,7 +7,7 @@ COPY script .
 
 RUN sh test.sh
 EXPOSE 5000
-WORKDIR '/home/ubuntu/github_folder/UNext'
+WORKDIR '/home/ubuntu/github_folder/AutomatedDeployment'
 # WORKDIR '/var/lib/jenkins/workspace/job/UNext'
 CMD ["node","index.js"]
 
